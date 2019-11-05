@@ -51,19 +51,11 @@ const Home = props => {
 		props.history.push(`/?page=${page}`);
 	};
 
-	const handlePageStep = async lower => {
+	const handlePageStep = lower => {
 		if (lower) {
-			await setState({
-				...state,
-				activePage: Math.max(state.activePage - 1, 1)
-			});
-			props.history.push(`/?page=${state.activePage}`);
+			handlePage(Math.max(state.activePage - 1, 1));
 		} else {
-			await setState({
-				...state,
-				activePage: Math.min(state.activePage + 1, state.maxPages)
-			});
-			props.history.push(`/?page=${state.activePage}`);
+			handlePage(Math.min(state.activePage + 1, state.maxPages));
 		}
 	};
 
